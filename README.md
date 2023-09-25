@@ -31,7 +31,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📝 Authors
 
-- Obobairibhijie Jeremiah-Louis
+- Obobairibhojie Jeremiah-Louis
 
 ## 📧 Contact
 

@@ -1,0 +1,33 @@
+name: calculatorapp
+description: A new Flutter project.
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.0.5 <4.0.0'
+
+dependencies:
+  smooth_page_indicator: ^1.1.0
+  flutter_svg: ^2.0.7
+  iconsax: ^0.0.8
+  flutter:
+    sdk: flutter
+    
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  fonts:
+    - family: TT Interfaces
+      fonts:
+        - asset: fonts/TT-Interfaces-Bold.otf
+        - asset: fonts/TT-Interfaces-DemiBold.otf
+        - asset: fonts/TT-Interfaces-Regular.otf
+  assets: 
+    - assets/
+
+  uses-material-design: true
+

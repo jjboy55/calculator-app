@@ -25,3 +25,30 @@ const TextStyle kPrimaryWhiteTextStyle = TextStyle(
   height: 1.5,
   fontWeight: FontWeight.bold,
 );
+
+const TextStyle kFormFieldTextStyle = TextStyle(
+  color: kTextColor,
+  fontSize: 12,
+);
+
+InputDecoration kFormFieldDecoration = InputDecoration(
+  focusedBorder: OutlineInputBorder(
+    borderSide: const BorderSide(color: kGreyColor),
+    borderRadius: BorderRadius.circular(8),
+  ),
+  enabledBorder: OutlineInputBorder(
+    borderSide: const BorderSide(color: kGreyColor),
+    borderRadius: BorderRadius.circular(8),
+  ),
+);
+
+InputDecorationTheme kFormFieldDecorationTheme = InputDecorationTheme(
+  focusedBorder: OutlineInputBorder(
+    borderSide: const BorderSide(color: kGreyColor),
+    borderRadius: BorderRadius.circular(8),
+  ),
+  enabledBorder: OutlineInputBorder(
+    borderSide: const BorderSide(color: kGreyColor),
+    borderRadius: BorderRadius.circular(8),
+  ),
+);

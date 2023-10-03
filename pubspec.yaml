@@ -10,8 +10,12 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   flutter_svg: ^2.0.7
   iconsax: ^0.0.8
+  flutter_screenutil: ^5.9.0
+  provider: ^6.0.5
+  
   flutter:
     sdk: flutter
+  
     
 
 dev_dependencies:

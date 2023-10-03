@@ -1,29 +1,30 @@
 import 'package:flutter/material.dart';
-
-import '../screens/gpa_screen.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../util/colors.dart';
 import '../util/decoration_widgets.dart';
 
 class GeneralButton extends StatelessWidget {
+  final String text;
+  final VoidCallback? onPressed;
   const GeneralButton({
+    required this.text,
+    this.onPressed,
     super.key,
-    required this.pixRatio,
   });
-
-  final double pixRatio;
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const GpaScreen()));
-      },
-      style: TextButton.styleFrom(backgroundColor: kBlueColor),
+      onPressed: onPressed,
+      style: TextButton.styleFrom(
+          backgroundColor: kBlueColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          )),
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 14 / pixRatio),
-        child: const Text(
-          'Next',
+        padding: EdgeInsets.symmetric(vertical: 14.h),
+        child: Text(
+          text,
           style: kButtonTextStyle,
         ),
       ),

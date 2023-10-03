@@ -1,14 +1,15 @@
 import 'package:calculatorapp/util/decoration_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../screens/gpa_screen.dart';
 import 'general_button.dart';
 
 class IntroPage extends StatelessWidget {
-  late final String svgPicture;
-  late final String boldText;
-  late final String bodyText;
+  final String svgPicture;
+  final String boldText;
+  final String bodyText;
 
-  IntroPage({
+  const IntroPage({
     super.key,
     required this.bodyText,
     required this.boldText,
@@ -19,7 +20,6 @@ class IntroPage extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    double pixRatio = MediaQuery.of(context).devicePixelRatio;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: width * (1 / 15)),
       child: Column(
@@ -50,7 +50,13 @@ class IntroPage extends StatelessWidget {
               heightFactor: (0.7),
             ),
           ),
-          GeneralButton(pixRatio: pixRatio),
+          GeneralButton(
+            text: 'Next',
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const GpaScreen()));
+            },
+          ),
         ],
       ),
     );

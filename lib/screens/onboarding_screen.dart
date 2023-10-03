@@ -18,7 +18,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       children: [
         PageView(
           controller: _pageController,
-          children: [
+          children: const [
             IntroPage(
               bodyText:
                   'Visualize your academic journey. Gain insights and analytics on your GPA trends. Set goals and stay motivated throughout the semester.',

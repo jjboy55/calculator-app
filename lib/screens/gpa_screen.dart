@@ -3,6 +3,7 @@ import 'package:calculatorapp/util/colors.dart';
 import 'package:calculatorapp/widgets/general_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 import '../widgets/dismissible_component.dart';
@@ -77,7 +78,6 @@ class GpaScreen extends StatelessWidget {
                 child: ListView.builder(
                     itemCount: calculator.userInputs.length,
                     itemBuilder: (context, index) {
-                      calculator.addController();
                       return DismissibleComponent(
                         calculator: calculator,
                         index: index,
@@ -88,6 +88,21 @@ class GpaScreen extends StatelessWidget {
                 text: 'Calculate',
                 onPressed: () {
                   calculator.gpaResult();
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                            content: SvgPicture.asset(
+                                '/Users/jerrylouisobobairibhojie/AndroidStudioProjects/gradePointAveragecalculator/calculatorapp/assets/i-phone-13-group-4-greenwoman.svg'),
+                            actions: <Widget>[
+                              Text(
+                                'Your GPA is 4.0',
+                                style: TextStyle(
+                                    color: kBlueColor,
+                                    fontSize: 20.sp,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ));
                 },
               ),
             ],

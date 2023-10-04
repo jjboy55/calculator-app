@@ -1,5 +1,6 @@
 import 'package:calculatorapp/provider/calculator_model.dart';
 import 'package:calculatorapp/util/colors.dart';
+import 'package:calculatorapp/util/decoration_widgets.dart';
 import 'package:calculatorapp/widgets/general_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -91,17 +92,37 @@ class GpaScreen extends StatelessWidget {
                   showDialog(
                       context: context,
                       builder: (BuildContext context) => AlertDialog(
-                            content: SvgPicture.asset(
-                                '/Users/jerrylouisobobairibhojie/AndroidStudioProjects/gradePointAveragecalculator/calculatorapp/assets/i-phone-13-group-4-greenwoman.svg'),
-                            actions: <Widget>[
-                              Text(
-                                'Your GPA is 4.0',
-                                style: TextStyle(
-                                    color: kBlueColor,
-                                    fontSize: 20.sp,
-                                    fontWeight: FontWeight.bold),
+                            backgroundColor: Colors.transparent,
+                            elevation: 0,
+                            content: Container(
+                              height: 269.h,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: Colors.white),
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 20.h, horizontal: 55.w),
+                                child: Column(
+                                  children: [
+                                    SvgPicture.asset(
+                                      kGreenWoman,
+                                      width: 191.w,
+                                      height: 191.h,
+                                    ),
+                                    SizedBox(
+                                      height: 10.h,
+                                    ),
+                                    Text(
+                                      'Your GPA is 4.0',
+                                      style: TextStyle(
+                                          color: kBlueColor,
+                                          fontSize: 20.sp,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ],
+                            ),
                           ));
                 },
               ),

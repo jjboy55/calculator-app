@@ -49,7 +49,7 @@ class InputDetails extends StatelessWidget {
                   SizedBox(
                     height: 4.h,
                   ),
-                  CustomDropDownButton(),
+                  const CustomDropDownButton(),
                 ],
               ),
               SizedBox(

@@ -59,6 +59,7 @@ class CalculatorModel extends ChangeNotifier {
   int? calculateGpa() {
     int? weight = valuePair();
     int? gradePoint = weight! * int.parse(controller2.text);
+
     return gradePoint;
   }
 
@@ -66,6 +67,7 @@ class CalculatorModel extends ChangeNotifier {
     if (kDebugMode) {
       print(calculateGpa());
     }
+    if (calculateGpa() == null) {}
     controller.clear();
     controller2.clear();
     notifyListeners();

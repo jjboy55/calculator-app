@@ -52,3 +52,6 @@ InputDecorationTheme kFormFieldDecorationTheme = InputDecorationTheme(
     borderRadius: BorderRadius.circular(8),
   ),
 );
+
+const String kGreenWoman =
+    '/Users/jerrylouisobobairibhojie/AndroidStudioProjects/gradePointAveragecalculator/calculatorapp/assets/i-phone-13-group-4-greenwoman.svg';

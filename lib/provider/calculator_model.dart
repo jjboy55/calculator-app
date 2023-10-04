@@ -1,4 +1,5 @@
 import 'package:calculatorapp/widgets/input_detail.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class CalculatorModel extends ChangeNotifier {
@@ -62,9 +63,13 @@ class CalculatorModel extends ChangeNotifier {
   }
 
   void gpaResult() {
-    print(calculateGpa());
+    if (kDebugMode) {
+      print(calculateGpa());
+    }
     controller.clear();
     controller2.clear();
     notifyListeners();
   }
+
+  void totalResult() {}
 }

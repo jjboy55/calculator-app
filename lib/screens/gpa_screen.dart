@@ -96,9 +96,7 @@ class GpaScreen extends StatelessWidget {
                             elevation: 0,
                             content: Container(
                               height: 269.h,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: Colors.white),
+                              decoration: containerDecoration,
                               child: Padding(
                                 padding: EdgeInsets.symmetric(
                                     vertical: 20.h, horizontal: 55.w),

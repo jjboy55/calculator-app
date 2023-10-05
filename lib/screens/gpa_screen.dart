@@ -112,13 +112,8 @@ class GpaScreen extends StatelessWidget {
                                     SizedBox(
                                       height: 10.h,
                                     ),
-                                    Text(
-                                      'Your GPA is 4.0',
-                                      style: TextStyle(
-                                          color: kBlueColor,
-                                          fontSize: 20.sp,
-                                          fontWeight: FontWeight.w600),
-                                    ),
+                                    Text('Your GPA is 4.0',
+                                        style: gpaResultTextStyle),
                                   ],
                                 ),
                               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'colors.dart';
 
 const TextStyle kPrimaryTextField = TextStyle(
@@ -55,3 +56,9 @@ InputDecorationTheme kFormFieldDecorationTheme = InputDecorationTheme(
 
 const String kGreenWoman =
     '/Users/jerrylouisobobairibhojie/AndroidStudioProjects/gradePointAveragecalculator/calculatorapp/assets/i-phone-13-group-4-greenwoman.svg';
+
+BoxDecoration containerDecoration =
+    BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.white);
+
+TextStyle gpaResultTextStyle =
+    TextStyle(color: kBlueColor, fontSize: 20.sp, fontWeight: FontWeight.w600);

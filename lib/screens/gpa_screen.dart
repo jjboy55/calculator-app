@@ -16,7 +16,6 @@ class GpaScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var calculator = context.watch<CalculatorModel>();
     double pixRatio = MediaQuery.of(context).devicePixelRatio;
-    String? options = calculator.options;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
@@ -92,14 +91,15 @@ class GpaScreen extends StatelessWidget {
                           onDismissed: (direction) {
                             calculator.remove(index);
                           },
-                          child: FormDetails(calculator: calculator),
+                          child: FormDetails(
+                            calculator: calculator,
+                          ),
                         );
                       })),
               GeneralButton(
                 text: 'Calculate',
                 onPressed: () {
-                  print(calculator.totalResult());
-                  // calculator.valuePair(options, calculator.intOptions);
+                  calculator.getGradeUnit();
                   showDialog(
                       context: context,
                       builder: (BuildContext context) => AlertDialog(

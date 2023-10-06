@@ -27,6 +27,10 @@ class CalculatorModel extends ChangeNotifier {
     intOptions = value;
   }
 
+  void getGrade(String? value) {
+    options = value;
+  }
+
   Map<String, int> valuePair() {
     List<String> grades = dropdownMenuEntries.map((e) => e.value).toList();
     Map<String, int> gradeMap = Map.fromIterables(grades, gradePoints);
@@ -56,7 +60,14 @@ class CalculatorModel extends ChangeNotifier {
     return sum;
   }
 
-  void result() {
-    print(totalDropdownInts());
+  int? getCourseWeight() {
+    Map<String, int> gradeMap = valuePair();
+    gradeMap[options];
+    return gradeMap[options];
+  }
+
+  void getGradeUnit() {
+    print(getCourseWeight()! * intOptions!);
+    notifyListeners();
   }
 }

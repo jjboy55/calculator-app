@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax/iconsax.dart';
-
 import '../provider/calculator_model.dart';
 import '../util/colors.dart';
 import '../util/decoration_widgets.dart';
@@ -11,7 +10,6 @@ class FormDetails extends StatefulWidget {
     super.key,
     required this.calculator,
   });
-
   final CalculatorModel calculator;
 
   @override
@@ -19,7 +17,6 @@ class FormDetails extends StatefulWidget {
 }
 
 class _FormDetailsState extends State<FormDetails> {
-  int? options = 0;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -78,12 +75,8 @@ class _FormDetailsState extends State<FormDetails> {
                           widget.calculator.dropdownMenuEntries,
                       onSelected: (value) {
                         setState(() {
-                          Map<String, int> gradeMap =
-                              widget.calculator.valuePair();
-                          print(gradeMap[value]);
+                          widget.calculator.getGrade(value);
                         });
-
-                        // int? weight = gradeMap[options];
                       },
                     ),
                   ),
@@ -112,9 +105,7 @@ class _FormDetailsState extends State<FormDetails> {
                     child: DropdownMenu<int>(
                       onSelected: (value) {
                         setState(() {
-                          options = value;
-                          widget.calculator.getValue(options);
-                          print(options);
+                          widget.calculator.getValue(value);
                         });
                       },
                       width: 76.w,

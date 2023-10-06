@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class CalculatorModel extends ChangeNotifier {
   List<Widget> userInputs = [];
+  List<int> gradePoints = [5, 4, 3, 2, 1, 0];
   String? options = '';
   int? intOptions = 0;
 
@@ -21,8 +22,6 @@ class CalculatorModel extends ChangeNotifier {
     const DropdownMenuEntry(value: 3, label: '3'),
     const DropdownMenuEntry(value: 4, label: '4'),
   ];
-
-  List<int> gradePoints = [5, 4, 3, 2, 1, 0];
 
   void getValue(int? value) {
     intOptions = value;
@@ -49,5 +48,15 @@ class CalculatorModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void totalResult() {}
+  int totalDropdownInts() {
+    var sum = 0;
+    for (var element in dropdownMenuEntriesint) {
+      sum += element.value;
+    }
+    return sum;
+  }
+
+  void result() {
+    print(totalDropdownInts());
+  }
 }

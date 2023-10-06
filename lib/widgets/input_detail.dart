@@ -114,6 +114,7 @@ class _FormDetailsState extends State<FormDetails> {
                         setState(() {
                           options = value;
                           widget.calculator.getValue(options);
+                          print(options);
                         });
                       },
                       width: 76.w,

@@ -98,7 +98,7 @@ class GpaScreen extends StatelessWidget {
               GeneralButton(
                 text: 'Calculate',
                 onPressed: () {
-                  calculator.valuePair(options, calculator.intOptions);
+                  // calculator.valuePair(options, calculator.intOptions);
                   showDialog(
                       context: context,
                       builder: (BuildContext context) => AlertDialog(

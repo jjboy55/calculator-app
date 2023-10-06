@@ -1,5 +1,4 @@
 import 'package:calculatorapp/widgets/input_detail.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class CalculatorModel extends ChangeNotifier {
@@ -27,17 +26,12 @@ class CalculatorModel extends ChangeNotifier {
 
   void getValue(int? value) {
     intOptions = value;
-    notifyListeners();
   }
 
-  void valuePair(String? value, int? intValue) {
-    options = value;
+  Map<String, int> valuePair() {
     List<String> grades = dropdownMenuEntries.map((e) => e.value).toList();
     Map<String, int> gradeMap = Map.fromIterables(grades, gradePoints);
-    int? weight = gradeMap[options];
-    int? gradePoint = weight! * intValue!;
-    print(gradePoint);
-    notifyListeners();
+    return gradeMap;
   }
 
   void addItems(FormDetails inputDetails) {

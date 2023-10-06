@@ -6,7 +6,7 @@ import '../provider/calculator_model.dart';
 import '../util/colors.dart';
 import '../util/decoration_widgets.dart';
 
-class FormDetails extends StatelessWidget {
+class FormDetails extends StatefulWidget {
   const FormDetails({
     super.key,
     required this.calculator,
@@ -14,6 +14,12 @@ class FormDetails extends StatelessWidget {
 
   final CalculatorModel calculator;
 
+  @override
+  State<FormDetails> createState() => _FormDetailsState();
+}
+
+class _FormDetailsState extends State<FormDetails> {
+  int? options = 0;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -68,9 +74,16 @@ class FormDetails extends StatelessWidget {
                         size: 14.sp,
                         color: kPrimaryBlackColor,
                       ),
-                      dropdownMenuEntries: calculator.dropdownMenuEntries,
+                      dropdownMenuEntries:
+                          widget.calculator.dropdownMenuEntries,
                       onSelected: (value) {
-                        calculator.valuePair(value, calculator.intOptions);
+                        setState(() {
+                          Map<String, int> gradeMap =
+                              widget.calculator.valuePair();
+                          print(gradeMap[value]);
+                        });
+
+                        // int? weight = gradeMap[options];
                       },
                     ),
                   ),
@@ -97,13 +110,20 @@ class FormDetails extends StatelessWidget {
                       )),
                     ),
                     child: DropdownMenu<int>(
+                      onSelected: (value) {
+                        setState(() {
+                          options = value;
+                          widget.calculator.getValue(options);
+                        });
+                      },
                       width: 76.w,
                       trailingIcon: Icon(
                         Iconsax.arrow_down_14,
                         size: 14.sp,
                         color: kPrimaryBlackColor,
                       ),
-                      dropdownMenuEntries: calculator.dropdownMenuEntriesint,
+                      dropdownMenuEntries:
+                          widget.calculator.dropdownMenuEntriesint,
                     ),
                   ),
                 ],

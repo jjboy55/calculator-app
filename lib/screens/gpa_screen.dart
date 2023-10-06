@@ -7,7 +7,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
-import '../widgets/dismissible_component.dart';
 import '../widgets/explainer_card.dart';
 import '../widgets/input_detail.dart';
 
@@ -17,6 +16,7 @@ class GpaScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var calculator = context.watch<CalculatorModel>();
     double pixRatio = MediaQuery.of(context).devicePixelRatio;
+    String? options = calculator.options;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
@@ -45,7 +45,7 @@ class GpaScreen extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           calculator.addItems(
-                            const InputDetails(),
+                            FormDetails(calculator: calculator),
                           );
                         },
                         child: const Text(
@@ -76,19 +76,29 @@ class GpaScreen extends StatelessWidget {
                 height: 22.h,
               ),
               Expanded(
-                child: ListView.builder(
-                    itemCount: calculator.userInputs.length,
-                    itemBuilder: (context, index) {
-                      return DismissibleComponent(
-                        calculator: calculator,
-                        index: index,
-                      );
-                    }),
-              ),
+                  child: ListView.builder(
+                      itemCount: calculator.userInputs.length,
+                      itemBuilder: (context, index) {
+                        return Dismissible(
+                          direction: DismissDirection.endToStart,
+                          background: Container(
+                            color: Colors.red,
+                            child: const Icon(
+                              Iconsax.trash,
+                              color: kPrimaryWhiteColor,
+                            ),
+                          ),
+                          key: UniqueKey(),
+                          onDismissed: (direction) {
+                            calculator.remove(index);
+                          },
+                          child: FormDetails(calculator: calculator),
+                        );
+                      })),
               GeneralButton(
                 text: 'Calculate',
                 onPressed: () {
-                  calculator.gpaResult();
+                  calculator.valuePair(options, calculator.intOptions);
                   showDialog(
                       context: context,
                       builder: (BuildContext context) => AlertDialog(

@@ -22,7 +22,7 @@ class CustomDropDownButtonInt extends StatelessWidget {
         )),
       ),
       child: DropdownMenu<int>(
-        controller: calculator.controller2,
+        onSelected: (value) => calculator.getValue(value),
         width: 76.w,
         trailingIcon: Icon(
           Iconsax.arrow_down_14,

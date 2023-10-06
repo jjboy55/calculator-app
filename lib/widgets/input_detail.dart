@@ -1,14 +1,18 @@
-import 'package:calculatorapp/util/colors.dart';
-import 'package:calculatorapp/widgets/custom_dropdown_int.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../util/decoration_widgets.dart';
-import 'custom_dropdown_button.dart';
+import 'package:iconsax/iconsax.dart';
 
-class InputDetails extends StatelessWidget {
-  const InputDetails({
+import '../provider/calculator_model.dart';
+import '../util/colors.dart';
+import '../util/decoration_widgets.dart';
+
+class FormDetails extends StatelessWidget {
+  const FormDetails({
     super.key,
+    required this.calculator,
   });
+
+  final CalculatorModel calculator;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +53,27 @@ class InputDetails extends StatelessWidget {
                   SizedBox(
                     height: 4.h,
                   ),
-                  const CustomDropDownButton(),
+                  DropdownMenuTheme(
+                    data: DropdownMenuTheme.of(context).copyWith(
+                      inputDecorationTheme: kFormFieldDecorationTheme.copyWith(
+                        constraints: BoxConstraints(
+                          maxHeight: 40.h,
+                        ),
+                      ),
+                    ),
+                    child: DropdownMenu<String>(
+                      width: 99.w,
+                      trailingIcon: Icon(
+                        Iconsax.arrow_down_14,
+                        size: 14.sp,
+                        color: kPrimaryBlackColor,
+                      ),
+                      dropdownMenuEntries: calculator.dropdownMenuEntries,
+                      onSelected: (value) {
+                        calculator.valuePair(value, calculator.intOptions);
+                      },
+                    ),
+                  ),
                 ],
               ),
               SizedBox(
@@ -65,7 +89,23 @@ class InputDetails extends StatelessWidget {
                   SizedBox(
                     height: 4.h,
                   ),
-                  const CustomDropDownButtonInt(),
+                  DropdownMenuTheme(
+                    data: DropdownMenuTheme.of(context).copyWith(
+                      inputDecorationTheme: kFormFieldDecorationTheme.copyWith(
+                          constraints: BoxConstraints(
+                        maxHeight: 40.h,
+                      )),
+                    ),
+                    child: DropdownMenu<int>(
+                      width: 76.w,
+                      trailingIcon: Icon(
+                        Iconsax.arrow_down_14,
+                        size: 14.sp,
+                        color: kPrimaryBlackColor,
+                      ),
+                      dropdownMenuEntries: calculator.dropdownMenuEntriesint,
+                    ),
+                  ),
                 ],
               ),
             ],

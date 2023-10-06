@@ -4,11 +4,8 @@ import 'package:flutter/material.dart';
 
 class CalculatorModel extends ChangeNotifier {
   List<Widget> userInputs = [];
-  TextEditingController controller = TextEditingController();
-  TextEditingController controller2 = TextEditingController();
-
-  List<TextEditingController> controllerList = [];
-  List<TextEditingController> controllerList2 = [];
+  String? options = '';
+  int? intOptions = 0;
 
   List<DropdownMenuEntry<String>> dropdownMenuEntries = [
     const DropdownMenuEntry(value: 'A', label: 'A'),
@@ -28,15 +25,22 @@ class CalculatorModel extends ChangeNotifier {
 
   List<int> gradePoints = [5, 4, 3, 2, 1, 0];
 
-  String? letter;
-
-  int? valuePair() {
-    List<String> grades = dropdownMenuEntries.map((e) => e.value).toList();
-    Map<String, int> gradeMap = Map.fromIterables(grades, gradePoints);
-    return gradeMap[controller.text];
+  void getValue(int? value) {
+    intOptions = value;
+    notifyListeners();
   }
 
-  void addItems(InputDetails inputDetails) {
+  void valuePair(String? value, int? intValue) {
+    options = value;
+    List<String> grades = dropdownMenuEntries.map((e) => e.value).toList();
+    Map<String, int> gradeMap = Map.fromIterables(grades, gradePoints);
+    int? weight = gradeMap[options];
+    int? gradePoint = weight! * intValue!;
+    print(gradePoint);
+    notifyListeners();
+  }
+
+  void addItems(FormDetails inputDetails) {
     userInputs.add(inputDetails);
     notifyListeners();
   }
@@ -48,28 +52,6 @@ class CalculatorModel extends ChangeNotifier {
 
   void remove(int index) {
     userInputs.removeAt(index);
-    notifyListeners();
-  }
-
-  void addController() {
-    controllerList.add(controller);
-    controllerList2.add(controller2);
-  }
-
-  int? calculateGpa() {
-    int? weight = valuePair();
-    int? gradePoint = weight! * int.parse(controller2.text);
-
-    return gradePoint;
-  }
-
-  void gpaResult() {
-    if (kDebugMode) {
-      print(calculateGpa());
-    }
-    if (calculateGpa() == null) {}
-    controller.clear();
-    controller2.clear();
     notifyListeners();
   }
 

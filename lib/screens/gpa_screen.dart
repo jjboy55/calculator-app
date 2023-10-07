@@ -99,7 +99,10 @@ class GpaScreen extends StatelessWidget {
               GeneralButton(
                 text: 'Calculate',
                 onPressed: () {
-                  calculator.getGradeUnit();
+                  // calculator.getGradeUnit();
+
+                  calculator.totalDropdownInts();
+
                   showDialog(
                       context: context,
                       builder: (BuildContext context) => AlertDialog(
@@ -121,7 +124,7 @@ class GpaScreen extends StatelessWidget {
                                     SizedBox(
                                       height: 10.h,
                                     ),
-                                    Text('Your GPA is 4.0',
+                                    Text('Your GPA is ',
                                         style: gpaResultTextStyle),
                                   ],
                                 ),

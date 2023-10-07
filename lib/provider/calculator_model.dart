@@ -6,6 +6,7 @@ class CalculatorModel extends ChangeNotifier {
   List<int> gradePoints = [5, 4, 3, 2, 1, 0];
   String? options = '';
   int? intOptions = 0;
+  int? gradeUnit = 0;
 
   List<DropdownMenuEntry<String>> dropdownMenuEntries = [
     const DropdownMenuEntry(value: 'A', label: 'A'),
@@ -57,17 +58,26 @@ class CalculatorModel extends ChangeNotifier {
     for (var element in dropdownMenuEntriesint) {
       sum += element.value;
     }
+    print(sum);
     return sum;
   }
 
+  // int totalDropdowns() {
+  //   var sum = 0;
+  //   for (var element in dropdownMenuEntries) {
+  //     sum += valuePair()[options]!;
+  //   }
+  //   return sum;
+  // }
+
   int? getCourseWeight() {
-    Map<String, int> gradeMap = valuePair();
-    gradeMap[options];
-    return gradeMap[options];
+    Map<String, int> gradeValues = valuePair();
+    gradeValues[options];
+    return gradeValues[options];
   }
 
   void getGradeUnit() {
-    print(getCourseWeight()! * intOptions!);
+    gradeUnit = getCourseWeight()! * intOptions!;
     notifyListeners();
   }
 }

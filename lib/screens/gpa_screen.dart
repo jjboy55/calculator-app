@@ -101,8 +101,7 @@ class GpaScreen extends StatelessWidget {
                 onPressed: () {
                   // calculator.getGradeUnit();
 
-                  calculator.totalDropdownInts();
-
+                  calculator.gettotalDropdown();
                   showDialog(
                       context: context,
                       builder: (BuildContext context) => AlertDialog(

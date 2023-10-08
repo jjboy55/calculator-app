@@ -58,8 +58,12 @@ class CalculatorModel extends ChangeNotifier {
     for (var element in dropdownMenuEntriesint) {
       sum += element.value;
     }
-    print(sum);
     return sum;
+  }
+
+  void gettotalDropdown() {
+    print(totalDropdownInts());
+    notifyListeners();
   }
 
   // int totalDropdowns() {

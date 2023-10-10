@@ -43,6 +43,7 @@ class GpaScreen extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
+                          calculator.totalSumList.clear();
                           calculator.addItems(
                             FormDetails(calculator: calculator),
                           );
@@ -100,8 +101,8 @@ class GpaScreen extends StatelessWidget {
                 text: 'Calculate',
                 onPressed: () {
                   // calculator.getGradeUnit();
-
-                  calculator.gettotalDropdown();
+                  // calculator.gettotalDropdown();
+                  calculator.getTotalSum();
                   showDialog(
                       context: context,
                       builder: (BuildContext context) => AlertDialog(
@@ -123,7 +124,7 @@ class GpaScreen extends StatelessWidget {
                                     SizedBox(
                                       height: 10.h,
                                     ),
-                                    Text('Your GPA is ',
+                                    Text('Your GPA is ${calculator.intOptions}',
                                         style: gpaResultTextStyle),
                                   ],
                                 ),

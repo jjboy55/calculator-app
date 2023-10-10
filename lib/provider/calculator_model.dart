@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 class CalculatorModel extends ChangeNotifier {
   List<Widget> userInputs = [];
   List<int> gradePoints = [5, 4, 3, 2, 1, 0];
+  List<int?> totalSumList = [];
+  int? value = 0;
   String? options = '';
   int? intOptions = 0;
   int? gradeUnit = 0;
@@ -84,4 +86,19 @@ class CalculatorModel extends ChangeNotifier {
     gradeUnit = getCourseWeight()! * intOptions!;
     notifyListeners();
   }
+
+  void addValuesToList() {
+    totalSumList.add(intOptions);
+  }
+
+  void getTotalSum() {
+    int sum = 0;
+    for (var element in totalSumList) {
+      if (element != null) {
+        print(sum += element);
+      }
+    }
+  }
+
+  void total() {}
 }

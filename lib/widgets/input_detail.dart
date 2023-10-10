@@ -106,7 +106,6 @@ class _FormDetailsState extends State<FormDetails> {
                       onSelected: (value) {
                         setState(() {
                           widget.calculator.getValue(value);
-                          widget.calculator.addValuesToList();
                         });
                       },
                       width: 76.w,

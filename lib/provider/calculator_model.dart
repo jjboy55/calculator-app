@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 class CalculatorModel extends ChangeNotifier {
   List<Widget> userInputs = [];
   List<int> gradePoints = [5, 4, 3, 2, 1, 0];
-  List<int?> totalSumList = [];
+  List<int?> totalGpa = [];
   int? value = 0;
   String? options = '';
   int? intOptions = 0;
   int? gradeUnit = 0;
+  int? gradeTotal = 0;
 
   List<DropdownMenuEntry<String>> dropdownMenuEntries = [
     const DropdownMenuEntry(value: 'A', label: 'A'),
@@ -55,27 +56,6 @@ class CalculatorModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  int totalDropdownInts() {
-    var sum = 0;
-    for (var element in dropdownMenuEntriesint) {
-      sum += element.value;
-    }
-    return sum;
-  }
-
-  void gettotalDropdown() {
-    print(totalDropdownInts());
-    notifyListeners();
-  }
-
-  // int totalDropdowns() {
-  //   var sum = 0;
-  //   for (var element in dropdownMenuEntries) {
-  //     sum += valuePair()[options]!;
-  //   }
-  //   return sum;
-  // }
-
   int? getCourseWeight() {
     Map<String, int> gradeValues = valuePair();
     gradeValues[options];
@@ -87,18 +67,19 @@ class CalculatorModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void addValuesToList() {
-    totalSumList.add(intOptions);
+  void addTotaltoList() {
+    getGradeUnit();
+    totalGpa.add(gradeUnit);
+    notifyListeners();
   }
 
-  void getTotalSum() {
+  int sumValues() {
     int sum = 0;
-    for (var element in totalSumList) {
+    for (int? element in totalGpa) {
       if (element != null) {
-        print(sum += element);
+        sum += element;
       }
     }
+    return sum;
   }
-
-  void total() {}
 }

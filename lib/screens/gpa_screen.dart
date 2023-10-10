@@ -43,7 +43,6 @@ class GpaScreen extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          calculator.totalSumList.clear();
                           calculator.addItems(
                             FormDetails(calculator: calculator),
                           );
@@ -61,6 +60,7 @@ class GpaScreen extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       calculator.removeAll();
+                      calculator.totalGpa.clear();
                     },
                     child: const Text(
                       'Clear',
@@ -91,6 +91,7 @@ class GpaScreen extends StatelessWidget {
                           key: UniqueKey(),
                           onDismissed: (direction) {
                             calculator.remove(index);
+                            calculator.totalGpa.removeAt(index);
                           },
                           child: FormDetails(
                             calculator: calculator,
@@ -100,9 +101,10 @@ class GpaScreen extends StatelessWidget {
               GeneralButton(
                 text: 'Calculate',
                 onPressed: () {
-                  // calculator.getGradeUnit();
-                  // calculator.gettotalDropdown();
-                  calculator.getTotalSum();
+                  calculator.getGradeUnit();
+                  calculator.addTotaltoList();
+                  print(calculator.totalGpa);
+
                   showDialog(
                       context: context,
                       builder: (BuildContext context) => AlertDialog(
@@ -124,7 +126,8 @@ class GpaScreen extends StatelessWidget {
                                     SizedBox(
                                       height: 10.h,
                                     ),
-                                    Text('Your GPA is ${calculator.intOptions}',
+                                    Text(
+                                        'Your GPA is ${calculator.sumValues()}',
                                         style: gpaResultTextStyle),
                                   ],
                                 ),

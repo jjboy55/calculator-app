@@ -59,8 +59,15 @@ class GpaScreen extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      calculator.removeAll();
-                      calculator.totalGpa.clear();
+                      // calculator.removeAll();
+                      // calculator.totalGpa.clear();
+                      calculator.getGradeUnit();
+                      calculator.addTotaltoList();
+                      calculator.addSumOfUnits();
+                      calculator.sumUnits();
+                      print(calculator.totalUnit);
+                      calculator.sumValues();
+                      print(calculator.totalGpa);
                     },
                     child: const Text(
                       'Clear',
@@ -98,12 +105,15 @@ class GpaScreen extends StatelessWidget {
                           ),
                         );
                       })),
+              Text(
+                calculator.totalGpa.length.toString(),
+                style: kSecondaryTextStyle,
+                textAlign: TextAlign.center,
+              ),
               GeneralButton(
                 text: 'Calculate',
                 onPressed: () {
-                  // calculator.getGradeUnit();
-                  // calculator.addTotaltoList();
-                  // print(calculator.totalGpa);
+                  print(calculator.totalGpaScore());
 
                   showDialog(
                       context: context,
@@ -127,7 +137,7 @@ class GpaScreen extends StatelessWidget {
                                       height: 10.h,
                                     ),
                                     Text(
-                                        'Your GPA is ${calculator.sumValues()}',
+                                        'Your GPA is ${calculator.totalGpaScore()}',
                                         style: gpaResultTextStyle),
                                   ],
                                 ),

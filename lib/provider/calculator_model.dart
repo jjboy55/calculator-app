@@ -5,6 +5,7 @@ class CalculatorModel extends ChangeNotifier {
   List<Widget> userInputs = [];
   List<int> gradePoints = [5, 4, 3, 2, 1, 0];
   List<int?> totalGpa = [];
+  List<int?> totalUnit = [];
   int? value = 0;
   String? options = '';
   int? intOptions = 0;
@@ -73,6 +74,10 @@ class CalculatorModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void addSumOfUnits() {
+    totalUnit.add(intOptions);
+  }
+
   int sumValues() {
     int sum = 0;
     for (int? element in totalGpa) {
@@ -81,5 +86,20 @@ class CalculatorModel extends ChangeNotifier {
       }
     }
     return sum;
+  }
+
+  int sumUnits() {
+    int sum = 0;
+    for (int? element in totalUnit) {
+      if (element != null) {
+        sum += element;
+      }
+    }
+    return sum;
+  }
+
+  double totalGpaScore() {
+    double gpaScore = sumValues() / sumUnits();
+    return gpaScore;
   }
 }
